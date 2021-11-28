@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Pending Orders{% endblock title %}
+{% block add%}neworder{% endblock add %}	
+{% block what %}Order{% endblock what %}
+{% block stylesheet%}
+<link rel='stylesheet' href='../static/css/orders.css'>
+<link rel='stylesheet' href='../static/css/pending.css'>
+{% endblock stylesheet%}
+{% block body %}
+<div class="container">
+{% if pend %}
+<form method='POST' >
+ {% csrf_token %}
+<table>
+	<tr>
+		<th style='width:5%;'></th>
+		<th>Serial number</th>
+		<th>Order name</th>
+		<th>Booking date</th>
+    	<th>Payment Status</th>
+    	<th>Mobile number</th>
+    	<th>Generate bill</th>
+     </tr>
+    {% for x in pend%}
+		<tr>
+			<td><input type='checkbox' name="del[]" value={{x.Order_id}} onchange="track(this)" ></td>
+		    <td>{{x.serial_number}}</td>
+		    <td>{{x.order_name}}</td>
+        	<td>{{x.order_received}}</td>
+        	<td>{{x.advance}}</td>
+        	<td>{{x.mobile_number}}</td>
+			<td><a href='generatebill/{{x.Order_id}}' target='_blank'>{{x.serial_number}}</a></td>
+		</tr>
+	{% endfor %}
+	<button disabled id='del' type='submit' class="btn1" role="button" >Delete Selected Orders </button>
+	
+</table> 
+</form>
+{% else %}
+    <h2>No Pending Orders</h2>
+{% endif %}
+</div>
+{% endblock body%}

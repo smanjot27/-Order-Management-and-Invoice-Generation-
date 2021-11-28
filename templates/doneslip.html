@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    {% load mathfilters %}
+<div class="container" style='font-family:"Playfair Display", serif ; font-size:140%;'>   
+	<h1 style="text-align:'center';"> Orders Completed</h1>
+<p style="text-align='center';"> Date: {{date}} </p>
+<table border='1' cellpadding='5'>
+	<tr>
+		<th>Serial number</th>
+		<th>Order name</th>
+    	<th>Delivery Date</th>
+        <th> Salesman Assigned</th>
+        <th> Tailor Assigned</th>
+    	<th>Balance</th>
+    	<th>Mobile number</th>
+     </tr>
+    {% for x in today%}
+		    <tr>
+		        <td>{{x.serial_number}}</td>
+		        <td>{{x.order_name}}</td>
+        	    <td>{{x.delivery_date}}</td>
+                <td>{{x.salesman_assigned}}</td>
+                <td>{{x.tailor_assigned}}</td>
+        		<td>{{x.amount| sub:x.advance}}</td>
+        	    <td>{{x.mobile_number}}</td>
+		    </tr>
+			
+	{% endfor %}
+</table> 			
+    </body>
+</html>

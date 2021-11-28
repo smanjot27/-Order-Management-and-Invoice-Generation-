@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block c %}active {% endblock c %}  
+{% block add%}newtailor{% endblock add %}	{% block what %}Tailor{% endblock what %}
+{% block title %} Tailor Details{% endblock title %}
+{% block stylesheet%}
+<link rel='stylesheet' href='../static/css/orders.css'>
+{% endblock stylesheet%}
+{% block body %}
+{% load mathfilters %}
+{% load multifor %}
+{% if tailor %}
+<table style="margin-left: 29.5%;
+    width: 42%;
+    margin-top: 3%;">
+<tr>
+		<th>Serial number</th>
+		<th>Tailor name</th>
+</tr>
+{% for i in tailor%}
+<tr>
+<td>{{i.tailorid}}</td>
+<td>{{i.tailor_name}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% else %}
+<h3>No Records</h3>
+{% endif %}
+{% endblock body %}

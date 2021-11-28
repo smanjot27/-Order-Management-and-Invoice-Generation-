@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body style='font-family:"Playfair Display", serif ; font-size:140%;'>
+    {%for key,value in tailor.items %}
+    <div style="page-break-after: always">
+       <h2 style="text-align='center';"> TAILOR SLIP </h2>
+       <h3 style="text-align='center';">{{key}}</h3>
+      <table border='1' cellpadding='5'>
+      <tr> 
+        <th >serial no </th>
+        <th>order name</th>
+          <th> salesman assigned </th>
+          <th> delivery date </th>
+          
+        </tr>
+	{%for i in value%}
+    <tr>	       
+        		<td>{{i.serial_number}}</td>
+                <td>{{i.order_name}}</td>
+                <td>{{i.salesman_assigned}}</td>
+                <td>{{i.delivery_date}}</td>
+        	    
+				<pdf: nextpage/>
+	</tr>
+    {% endfor %}
+    </table>
+    </div>
+    {% endfor %}			
+    </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Full Day Sales{% endblock title %}
+{% block b %}active {% endblock b %}  
+{% block add%}neworder{% endblock add %}	{% block what %}Order{% endblock what %}
+{% block stylesheet%}
+<link rel='stylesheet' href='../static/css/orders.css'>
+{% endblock stylesheet%}
+{% block body %}
+{% load mathfilters %}
+{% if today %}
+<div class="container">   
+<form method='POST' >
+ {% csrf_token %}
+<input type="text" placeholder="Enter Serial No. or Mobile No." id="in" name="inp">
+<button type="submit" class="btn0" role="button" id='search'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg></button>
+</form>
+<table>
+	<tr>
+		<th>Serial number</th>
+		<th>Order name</th>
+		<th>Booking date</th>
+    	<th>Delivery Date</th>
+    	<th>Balance</th>
+    	<th>Mobile number</th>
+    	<th>Generate bill</th>
+     </tr>
+    {% for x in today%}
+		    <tr>
+		        <td>{{x.serial_number}}</td>
+		        <td>{{x.order_name}}</td>
+        	    <td>{{x.order_received}}</td>
+        	    <td>{{x.delivery_date}}</td>
+        		<td>{{x.amount| sub:x.advance}}</td>
+        	    <td>{{x.mobile_number}}</td>
+				<td><a href='generatebill/{{x.Order_id}}' target='_blank'>{{x.serial_number}}</a></td>
+		    </tr>
+			
+	{% endfor %}
+</table> 
+{% else %}
+<h2>No Orders Received Today</h2>
+{% endif %}
+<div class='details' style='    margin: 6%;'>
+<a href='tailorSlip'>Download Tailor Slip</a><br>
+<a href='receivedslip'>Download Order Received Slip</a><br>
+<a href='completedslip'>Download Order Completed Slip</a>
+</div>
+</div>
+{% endblock body %}

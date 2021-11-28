@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Add New Order{% endblock title %}
+{% block stylesheet %}
+<link rel='stylesheet' href='../static/css/addorder.css'>
+{% endblock stylesheet %}
+{% block hide %}
+display:none;
+{% endblock hide %}
+{% block body %}
+<main>
+<h1> New Order</h1>
+<form method='post' action=''>
+           {% csrf_token %}
+{{form.as_p}}
+
+  <button type="submit" class="btn" id='btn'>Submit</button>
+</form>
+</main>
+{% endblock body %}
