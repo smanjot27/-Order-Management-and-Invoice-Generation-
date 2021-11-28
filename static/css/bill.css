@@ -1,0 +1,143 @@
+
+#up1{
+    
+    color: red;
+    width: 105px !important;
+    margin-left: 360px !important;
+    display: block !important;
+}
+ #up3{
+    text-align: right;
+    margin-top: -45.5px;
+    letter-spacing: 1px;
+    margin-right: 27px;
+    display: block;
+}
+
+ #up2{
+    margin-left: 50px;
+    margin-top: -72.7px;
+    display: block;
+}
+#mid{
+    text-align: center;
+    color: red;
+    font-size: 400%;
+    font-variant-caps: petite-caps;
+    margin-top: -2%;
+    width: 62%;
+    margin-left: 23%;
+    display: block;
+}
+#p1{
+    text-align: center;
+    font-size: 140%;
+    margin-top: -5%;
+}
+#p2{
+    text-align: center;
+    font-size: 140%;
+    margin-top: -3%;
+}
+ body{
+    border: solid black;
+    height: 534px;
+    width: 210mm;
+    margin: 0px;
+    font-family: 'Playfair Display', serif ;
+}
+#p3{
+    text-align: center;
+    font-weight:600;
+    margin-top: 10%;
+}
+.info{
+    margin-left: 4%;
+}
+#p22,#p44,#p66{
+    text-align: right;
+    margin-right: 15%;
+    margin-top: -4.5%;
+    font-family: 'Playfair Display', serif ;
+}
+#p11,#p33,#p55,#p77,#p88,#p99{
+    font-family: 'Playfair Display', serif ;
+    margin-bottom: -41px;
+    margin-left: 79px;
+    
+}
+#p77
+{
+    margin-bottom: -1%;
+}
+#p77,#p88
+{
+    margin-left: 17%;
+}
+#p99
+{
+
+    margin-right: 15%;
+    font-size: 123%;
+}
+#img
+{
+    position: absolute;
+    left: 6%;
+    top: 7%;
+}
+#svvg
+{
+    position: absolute;
+    left: 42.5%;
+    top: 5%;
+    width: 24px;
+}
+@media print{
+    #img
+    {
+        position: absolute;
+        left: 10%;
+        top: 5%;
+        width: 10%;
+        height: 10%;
+    }
+    #svvg
+    {
+        position: absolute;
+        left: 82%;
+        top: 3%;
+        width: 24px;
+    }
+}
+#estimate
+{
+    text-align: center;
+    font-weight: 600;
+    margin-top: -1%;
+}
+#p66
+{
+    text-align: left;
+    margin-top: 6%;
+    margin-bottom: -5%;
+}
+
+#item
+{
+    margin-right: 26%;
+    margin-bottom: -19px;
+}
+.names
+{
+    margin-bottom: -5%;
+    margin-left: 70%;
+    text-align: left;
+}
+#p44
+{
+    width: 50%;
+    float: right;
+    margin-right: 16%;
+    margin-top: -7%;
+}

@@ -1,0 +1,78 @@
+h2
+{
+text-align: center;
+font-size: 242%;
+color: #ccc3c3;
+margin: 16%;
+margin-bottom: 17%;
+}
+table{
+    margin-left: 6.5%;
+    width: 85%;
+    margin-top: 3%;
+}
+
+tbody, td, tfoot, th, thead, tr
+{
+padding:1%;
+text-align:center;
+border: 2px double #000000;
+font-family: fangsong;
+}
+tr th
+{
+   background: #1c5954;
+   color: #ffffff;
+
+}
+.left
+{
+    margin: 2%;
+    margin-left: 79%;
+}
+.left a
+{
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 131%;
+    color: #1c5954;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+}
+.btn1
+{
+    border-radius: 25px     !important;
+        width: 13%;
+        position: absolute;
+        top: 23%;
+        left: 18%;
+        background-color: #114f4a!important;
+        color: rgba(227, 230, 238, 0.9) !important;
+        border: none;
+        padding: 0.7%;
+        height: 6%;
+}
+.btn1:hover
+{
+	background-color: rgba(227, 230, 238, 0.9) !important;
+	color:	#114f4a !important;
+	border: 1px solid #114f4a;
+	transition: 0.2s;
+}
+#in{
+    margin-left: 35.5%;
+    position: absolute;
+    top: 23%;
+    width: 15%;
+    height: 6%;
+    padding: 0.2%;
+}
+.btn0{
+    background-color:#114f4a;
+    color: white;
+    margin-left: 50%;
+    position: absolute;
+    top: 23%;
+    width: 3%;
+    height: 6%;
+}

@@ -1,0 +1,82 @@
+main
+{
+margin-left: 24%;
+padding: 1%;
+}
+h1
+{
+    margin-left: 25%;
+    color: darkgray;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    color: #1c5954;
+    font-weight:670;
+}
+label
+{
+margin-right:7%;
+font-size: 128%;
+font-weight: 599;
+color: #1c5954;
+}
+input
+{
+font-family: "Times New Roman";
+}
+input[name='order_name']
+{
+margin-left: 3.5%;
+}
+input[name='amount']
+{
+margin-left: 7.5%;
+}
+input[name='salesman_assigned']
+{
+margin-left: -2.6%;
+}
+input[name='delivery_date']
+{
+margin-left: 2.5%;
+}
+input[name='mobile_number'],input[name='tailor_assigned']
+{
+margin-left: 0.5%;
+}
+input[name='advance']
+{
+margin-left: 6.8%;
+}
+input[name='serial_number']
+{
+margin-left:1.6%;
+}
+form
+{
+margin-top:3%;
+margin-left: 12%;
+}
+input
+{
+width:30%;
+height:3em;
+}
+.btn
+{
+margin-inline: auto;
+margin-left: 20%;
+border-radius:0px !important;
+}
+input:focus
+{
+border:1px solid #1c5954;
+}
+li
+{
+margin-left: 19%;
+list-style: none;
+font-size: 111%;
+margin-bottom: -1.5%;
+color: #1c5954;
+font-family: "Times New Roman";
+}

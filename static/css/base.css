@@ -1,0 +1,62 @@
+*{
+	font-family: 'Playfair Display', serif;
+
+}
+body
+{
+		background-color: rgba(227, 230, 238, 0.9);
+}
+#heading
+{
+    margin-bottom: 0 !important;
+    margin-inline: auto;
+    font-size: 267%;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: rgba(227, 230, 238, 0.9);
+    font-variant: small-caps;
+}
+.navbar
+{
+	background-color:#114f4a;
+	margin-bottom:1%;
+}
+.nav
+{
+	padding-left: 17% !important;
+	padding-right: 14%;
+}
+.active
+{
+	background-color:#114f4a !important;
+	color: rgba(227, 230, 238, 0.9) !important;
+}
+nav a
+{
+	color: #114f4a !important;
+	font-size: 126%;
+	font-weight: 591;
+}
+.btn
+{
+	border-radius: 25px !important;
+	width: 11%;
+	margin-left: 71%;
+	margin-top: 2%;
+	background-color: #114f4a!important;
+	color: rgba(227, 230, 238, 0.9) !important;
+}
+.btn:hover
+{
+	background-color: rgba(227, 230, 238, 0.9) !important;
+	color:	#114f4a !important;
+	border: 1px solid #114f4a;
+	transition: 0.2s;
+}
+#alert
+{
+    margin-top: -1%;
+    border-radius: 0px;
+	width: 100%;
+	position: absolute;
+}
