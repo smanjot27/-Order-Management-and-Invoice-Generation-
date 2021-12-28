@@ -9,22 +9,55 @@
 {% load mathfilters %}
 {% load multifor %}
 {% if tailor %}
+{%for key,value in tailor.items ;  x in serial%}
+{% if value %}
+       <pre><h3 style="text-align:center;"> Serial Number : {{x}}            Name : {{key}}</h3></pre>
+        
+      <table border='1' cellpadding='5' style='margin-bottom:5%;'>
+      <tr> 
+        <th >serial no </th>
+        <th>order name</th>
+          <th> salesman assigned </th>
+          <th> delivery date </th>
+          
+        </tr>
+
+	{%for i in value%}
+    <tr>	       
+        		<td>{{i.serial_number}}</td>
+                <td>{{i.order_name}}</td>
+                <td>{{i.salesman_assigned}}</td>
+                <td>{{i.delivery_date}}</td>
+        	    
+	</tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+    {% endfor %}			
+
+{% else %}
+<h2>No Records</h2>
+{% endif %}
+
+{% if data %}
 <table style="margin-left: 29.5%;
     width: 42%;
-    margin-top: 3%;">
+    margin-top: 3%; margin-bottom: 5%;">
 <tr>
 		<th>Serial number</th>
 		<th>Tailor name</th>
+        <th style='width:20%;'></th>
 </tr>
-{% for i in tailor%}
+{% for i in data%}
 <tr>
-<td>{{i.tailorid}}</td>
+<td>{{i.serial_no}}</td>
 <td>{{i.tailor_name}}</td>
+<td><a href='edittailors/{{i.tailorid}}'> Edit </a></td>
 </tr>
 {% endfor %}
 </table>
 
 {% else %}
-<h3>No Records</h3>
+<h2>No Records</h2>
 {% endif %}
 {% endblock body %}
