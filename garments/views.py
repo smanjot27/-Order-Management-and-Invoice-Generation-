@@ -75,6 +75,9 @@ def FullDaySales(request):
     d=datetime.date.today()
     if request.method=='POST':
         y=request.POST.get("inp")
+        x=request.POST.get('date')
+        slipname=request.POST.get('slips')
+        print(x,slipname)
         if y:
             li=[]
             for i in Order.objects.all():
@@ -82,14 +85,60 @@ def FullDaySales(request):
                     li.append(i)
             context={"today":li}
             return render(request, 'fullday.html',context)
+        if x:
+            if slipname=='tailor': 
+                info=tailor.objects.all()
+                tail={i.tailor_name:[] for i in info}
+                for i in Order.objects.all():
+                    if str(i.order_received)==x:
+                        tail[i.tailor_assigned].append(i)
+                final={}
+                for i in tail:
+                    if tail[i]:
+                        final[i]=tail[i]
+                template_path='tailorslip.html'
+                context={'tailor':final , 'date':x }
+                res=HttpResponse(content_type='application/pdf')
+                name=str(x)+ '_tailorslip'+'.pdf'
+                res['Content-Disposition']='attachment; filename={} '.format(name)
+                temp=get_template(template_path)
+                htm=temp.render(context)
+                pisa_status=pisa.CreatePDF( htm, dest=res)
+                return res
+            elif slipname=='received': 
+                now=[]
+                for i in Order.objects.all():
+                    if str(i.order_received)==x: now.append(i)
+                template_path='ReceivedSlip.html'
+                context={'today':now, 'date':x}
+                res=HttpResponse(content_type='application/pdf')
+                name=str(x)+ '_Receivedslip'+'.pdf'
+                res['Content-Disposition']='attachment; filename={} '.format(name)
+                temp=get_template(template_path)
+                htm=temp.render(context)
+                pisa_status=pisa.CreatePDF( htm, dest=res)
+                return res
+            elif slipname=='completed': 
+                now=[]
+                for i in Completed.objects.all():
+                    if str(i.order_completed)==x: now.append(i)
+                template_path='doneslip.html'
+                context={'today':now,'date':x}
+                res=HttpResponse(content_type='application/pdf')
+                name=str(x)+ '_Completedslip'+'.pdf'
+                res['Content-Disposition']='attachment; filename={} '.format(name)
+                temp=get_template(template_path)
+                htm=temp.render(context)
+                pisa_status=pisa.CreatePDF( htm, dest=res)
+                return res
+            else:
+                messages.warning(request,'Invalid Input')
+                return redirect('/')
+        elif slipname:
+            messages.warning(request,'Invalid Input')
+            return redirect('/')
     context={"today":today, 'date': d, 'flag':0}
     return render(request,'fullday.html',context)
-
-def Tailors(request):
-    info=tailor.objects.all()
-    context={'tailor':info}
-    return render(request,'tailors.html',context)
-
 
 def AddOrder(request):
     form_class= OrderForm
@@ -99,6 +148,7 @@ def AddOrder(request):
         if form.is_valid():
             
             order=form.save(commit=False)
+            order.tailor_assigned=order.tailor_assigned.upper()
             order.save()
 
             messages.success(request,'Order Placed Successfully!')
@@ -110,10 +160,10 @@ def Addtailor(request):
     form_class= tailors
     if request.method=='POST':
         form=tailors(request.POST)
-
         if form.is_valid():
 
             tailor1=form.save(commit=False)
+            tailor1.tailor_name=tailor1.tailor_name.upper()
             tailor1.save()
             messages.success(request,'New Tailor Added Successfully!')
             return redirect('/')
@@ -149,7 +199,7 @@ def GenerateBill(request,serial_no):
     # htm=temp.render(context)
     # pisa_status=pisa.CreatePDF( htm, dest=res)
     factory = qrcode.image.svg.SvgImage
-    img = qrcode.make("https://instagram.com/novelty_store_raymond?utm_medium=copy_link", image_factory=factory, box_size=2)
+    img = qrcode.make("https://instagram.com/novelty_store_raymond?utm_medium=copy_link", image_factory=factory, box_size=4)
     stream = BytesIO()
     img.save(stream)
     context["svg"] = stream.getvalue().decode()
@@ -162,8 +212,12 @@ def tailorSlip(request):
     for i in Order.objects.all():
         if i.order_received==x:
             tail[i.tailor_assigned].append(i)
+    final={}
+    for i in tail:
+        if tail[i]:
+            final[i]=tail[i]
     template_path='tailorslip.html'
-    context={'tailor':tail}
+    context={'tailor':final , 'date':x }
     res=HttpResponse(content_type='application/pdf')
     name=str(datetime.date.today())+ '_tailorslip'+'.pdf'
     res['Content-Disposition']='attachment; filename={} '.format(name)
@@ -171,6 +225,19 @@ def tailorSlip(request):
     htm=temp.render(context)
     pisa_status=pisa.CreatePDF( htm, dest=res)
     return res
+
+def Tailors(request):
+    info=tailor.objects.all()
+    tail={ i.tailor_name:[] for i in info}
+    sno=[]
+    sno=[i.serial_no for i in info]
+    for i in Order.objects.all():
+        tail[i.tailor_assigned].append(i)
+    for key,value in tail.items():
+        value.sort(key= lambda x: x.order_received, reverse=True)
+    context={'tailor':tail, 'serial': sno, 'data':info}
+    return render(request,'tailors.html',context)
+
 
 def OrderReceivedSlip(request):
     now=[]
@@ -215,3 +282,41 @@ def Completedorders(request):
             context={"pend":li}
             return render(request, 'complete.html',context)
     return render(request,'complete.html',context)
+
+
+def EditTailor(request, tid):
+    old=tailor.objects.get(tailorid=tid)
+    form=tailors(instance=old)
+    if request.method=='POST':
+        form=tailors(request.POST)
+        if form.is_valid():
+            old.delete()
+            tailor1=form.save(commit=False)
+            tailor1.tailor_name=tailor1.tailor_name.upper()
+            
+            tailor1.save()
+            messages.success(request,'Details Edited Successfully!')
+            return redirect('/')
+    return render(request,'addtailor.html',{'form':form})
+
+def EditOrder(request,oid):
+    global order
+    old=Order.objects.get(Order_id=oid)
+    form=OrderForm(instance=old)
+    if request.method=='POST':
+        form=OrderForm(request.POST, instance=old)
+        if form.is_valid():
+            order.remove(old)
+            old.delete()
+            orde=form.save(commit=False)
+            orde.tailor_assigned=orde.tailor_assigned.upper()
+            order.append(orde)
+            orde.save()
+            messages.success(request,'Details Edited Successfully!')
+            return redirect('/')
+    return render(request,'addorder.html',{'form':form})
+
+def view_404(request, exception=None):
+    x=str(request).split('/')[-2]
+    url='/'+x
+    return redirect(url)
