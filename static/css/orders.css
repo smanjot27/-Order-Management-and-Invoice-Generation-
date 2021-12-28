@@ -76,3 +76,60 @@ tr th
     width: 3%;
     height: 6%;
 }
+.edit:hover
+{
+    color: #1a9bc2;
+    text-decoration: underline;
+}
+.edit
+{
+    text-decoration: none;
+    color: #000000;
+}
+#headings
+{
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+    color: #0f5132;
+    font-size: 211%;
+}
+.bt
+{
+	width: 18%;
+	margin-top: 2%;
+	background-color: #114f4a!important;
+	color: rgba(227, 230, 238, 0.9) !important;
+    padding: 1%;
+
+}
+section
+{
+    margin: 3%;
+    margin-left: 14%;
+    margin-top: -3%;
+    width: 40%;
+}
+h6
+{
+    margin: 2%;
+    margin-bottom: 3%;
+}
+input[type='text']
+{
+    width:40%;
+height:3em;
+margin-bottom: 3%;
+}
+input[type='radio']
+{
+    margin-right: 1%;
+    margin-bottom: 2%;
+}
+.bt:hover
+{
+	background-color: rgba(227, 230, 238, 0.9) !important;
+	color:	#114f4a !important;
+	border: 1px solid #114f4a;
+	transition: 0.2s;
+}
