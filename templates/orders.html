@@ -32,10 +32,10 @@
 		<tr>
 		<td><input type='checkbox' name="del[]" value={{x.Order_id}} onchange='track(this)' ></td>
 		<td>{{x.serial_number}}</td>
-		<td>{{x.order_name}}</td>
+		<td ><a href='editorder/{{x.Order_id}}'  class='edit'>{{x.order_name}}</a></td>
         	<td>{{x.order_received}}</td>
         	<td>{{x.delivery_date}}</td>
-			<td>{{x.amount| sub:x.advance}}</td>
+			<td>{% if x.amount|sub:x.advance == 0 %} Fully Paid {% else %} {{x.amount| sub:x.advance}} {% endif %}</td>
         	<td>{{x.mobile_number}}</td>
 			<td><a href='generatebill/{{x.Order_id}}' target='_blank'>{{x.serial_number}}</a></td>
 		</tr>
