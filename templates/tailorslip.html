@@ -4,10 +4,12 @@
         <meta charset="UTF-8">
     </head>
     <body style='font-family:"Playfair Display", serif ; font-size:140%;'>
+       
     {%for key,value in tailor.items %}
+     <p> {{date}} </p>
     <div style="page-break-after: always">
-       <h2 style="text-align='center';"> TAILOR SLIP </h2>
-       <h3 style="text-align='center';">{{key}}</h3>
+       <h2 style="text-align:center;"> TAILOR SLIP </h2>
+       <h3 style="text-align:center;">{{key}}</h3>
       <table border='1' cellpadding='5'>
       <tr> 
         <th >serial no </th>
