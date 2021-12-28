@@ -25,31 +25,35 @@ font-family: "Times New Roman";
 }
 input[name='order_name']
 {
-margin-left: 3.5%;
+margin-left: 4%;
 }
 input[name='amount']
 {
-margin-left: 7.5%;
+margin-left: 8%;
 }
 input[name='salesman_assigned']
 {
-margin-left: -2.6%;
+margin-left: -2.5%;
 }
 input[name='delivery_date']
 {
-margin-left: 2.5%;
+margin-left: 3.3%;
 }
 input[name='mobile_number'],input[name='tailor_assigned']
 {
-margin-left: 0.5%;
+margin-left: 1%;
 }
 input[name='advance']
 {
-margin-left: 6.8%;
+margin-left: 8%;
 }
 input[name='serial_number']
 {
 margin-left:1.6%;
+}
+input[name='serial_no']
+{
+    margin-left:3%;
 }
 form
 {
