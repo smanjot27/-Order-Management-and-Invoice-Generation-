@@ -8,6 +8,7 @@
 {% endblock stylesheet%}
 {% block body %}
 <div class="container">
+	<h2 id='headings'>Completed Orders</h2>
 <form method='POST' >
  {% csrf_token %}
 <input type="text" placeholder="Enter Serial No. or Mobile No." id="in" name="inp">
@@ -25,7 +26,6 @@
     	<th>Mobile number</th>
 		<th> Salesman Assigned</th>
 		<th>Tailor Assigned</th>
-    	<th>Generate bill</th>
      </tr>
     {% for x in pend%}
 		<tr>
@@ -36,7 +36,6 @@
         	<td>{{x.mobile_number}}</td>
 			<td>{{x.tailor_assigned}}</td>
 			<td>{{x.salesman_assigned}}</td>
-			<td><a href='generatebill/{{x.Order_id}}' target='_blank'>{{x.serial_number}}</a></td>
 		</tr>
 	{% endfor %}
 	
