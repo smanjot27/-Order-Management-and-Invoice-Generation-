@@ -12,6 +12,7 @@
     letter-spacing: 1px;
     margin-right: 27px;
     display: block;
+    font-family: "times new roman";
 }
 
  #up2{
@@ -53,15 +54,17 @@
 }
 .info{
     margin-left: 4%;
+    font-family: "times new roman";
+
 }
-#p22,#p44,#p66{
+#p22,#p44,#p66,#p110{
     text-align: right;
     margin-right: 15%;
     margin-top: -4.5%;
-    font-family: 'Playfair Display', serif ;
+    font-family: "times new roman";
 }
 #p11,#p33,#p55,#p77,#p88,#p99{
-    font-family: 'Playfair Display', serif ;
+    font-family: "times new roman";
     margin-bottom: -41px;
     margin-left: 79px;
     
@@ -89,7 +92,7 @@
 #svvg
 {
     position: absolute;
-    left: 42.5%;
+    left: 46.5%;
     top: 5%;
     width: 24px;
 }
@@ -127,6 +130,7 @@
 {
     margin-right: 26%;
     margin-bottom: -19px;
+    margin-top: 8%;
 }
 .names
 {
