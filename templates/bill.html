@@ -23,19 +23,21 @@
         <p id="p1">Exclusive Showroom of: Suiting, Shirting, Coat Pant & Sherwanis</p>
         <p id="p2"> Rainak Bazaar, Jalandhar City</p>
         <div class="info">
-        <pre><p id="p11">  Serial Number:     {{x.serial_number}}</p></pre>
-        <pre><p id="p22">Date:         {{date}}</p></pre>
-        <pre><p id="p33" style="margin-bottom:-1%;">Tailor Assigned:     {{x.tailor_assigned}}</p></pre>
+        <pre><p id="p11">   Serial Number:     {{x.serial_number}}</p></pre>
+        <pre><p id="p22">Date:        {{date}}</p></pre>
+        <pre><p id="p33" style="margin-bottom:-1%;"> Tailor Assigned:     {{x.tailor_assigned}}</p></pre>
+        <pre> <p id= 'p110' style='margin-top:-6%;'> Delivery Date:        {{x.delivery_date}}</p></pre>
         <div id="p44" >
         <p id='item'>Item: </p>       {% for skill in item %}
                     <p class='names'>{{ skill }}</p>
               {% endfor %}
          </div>
-        <pre><p id="p55">     Booking Date:   {{x.order_received}}</p></pre>
+        <pre><p id="p55" style='margin-top:-2%;'>    Booking Date:     {{x.order_received}}</p></pre>
         <pre><p id="p66">               Salesman Assigned:     {{x.salesman_assigned}}</p></pre><br>
         <pre><p id="p99"><b> Grand Total:   {{x.amount}}</b></p></pre>
-        <pre><p id="p77" style='margin-top: 6%;'>Advance:     {{x.advance}}</p></pre>
-        <pre><p id="p88">Balance:    {{x.amount|sub:x.advance}} </p></pre>
+        <pre><p id="p77" style='margin-top: 6%;'> Advance:    {{x.advance}}</p></pre>
+        <pre><p id="p88">  Balance:    {% if x.amount|sub:x.advance == 0 %} None {% else %} {{x.amount| sub:x.advance}} {% endif %}</td>
+        </p></pre>
         <p id="p3"> NOT RESPONSIBLE FOR ORDERS AFTER 30 DAYS</p>
         <p id='estimate'> ESTIMATE</p>
     </body>
