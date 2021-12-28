@@ -9,6 +9,8 @@
 {% block body %}
 <div class="container">
 {% if pend %}
+<h2 id='headings'>Pending Orders</h2>
+
 <form method='POST' >
  {% csrf_token %}
 <table>
