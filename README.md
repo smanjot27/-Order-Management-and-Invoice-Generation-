@@ -62,7 +62,7 @@ Sales categorised as per Tailor
 
 Generated PDFs
 
-![image](https://github.com/user-attachments/assets/ee0364a0-1d83-4908-816a-d954d1ace697)
+![image](https://github.com/user-attachments/assets/bbf24c2c-9ad9-4c0d-8aaa-a0cf3c504474)
 
 ![image](https://github.com/user-attachments/assets/f8a69277-a21a-4043-94fa-41f2cb70d6db)
 
